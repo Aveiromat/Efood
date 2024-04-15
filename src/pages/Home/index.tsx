@@ -85,6 +85,26 @@ const lancamentos: Clothing[] = [
     type: nota,
     infos: ['Italiana'],
     image: macarrao
+  },
+  {
+    id: 5,
+    category: 'Saiba mais',
+    description:
+      'A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!',
+    title: 'La Dolce Vita Trattoria',
+    type: nota,
+    infos: ['Italiana'],
+    image: macarrao
+  },
+  {
+    id: 6,
+    category: 'Saiba mais',
+    description:
+      'A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!',
+    title: 'La Dolce Vita Trattoria',
+    type: nota,
+    infos: ['Italiana'],
+    image: macarrao
   }
 ]
 

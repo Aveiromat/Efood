@@ -1,8 +1,9 @@
 import Clothing from '../../models/Clothing'
-import ProductsList from '../../components/ProductsList'
 
-import pizza from '../../assets/images/pizza.png'
 import HeaderCarrinho from '../../components/HeaderCarrinho'
+import pizza from '../../assets/images/pizza.png'
+import ProductsListBuy from '../../components/ProductsListBuy'
+import BannerBuy from '../../components/BannerBuy'
 
 const promocoes: Clothing[] = [
   {
@@ -38,6 +39,24 @@ const promocoes: Clothing[] = [
     description:
       'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
     title: 'Pizza Marguerita4',
+    infos: [],
+    image: pizza
+  },
+  {
+    id: 5,
+    category: 'Adicionar ao carrinho',
+    description:
+      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
+    title: 'Pizza Marguerita5',
+    infos: [],
+    image: pizza
+  },
+  {
+    id: 6,
+    category: 'Adicionar ao carrinho',
+    description:
+      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
+    title: 'Pizza Marguerita6',
     infos: [],
     image: pizza
   }
@@ -79,13 +98,32 @@ const lancamentos: Clothing[] = [
     title: 'Pizza Marguerita4',
     infos: [],
     image: pizza
+  },
+  {
+    id: 5,
+    category: 'Adicionar ao carrinho',
+    description:
+      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
+    title: 'Pizza Marguerita5',
+    infos: [],
+    image: pizza
+  },
+  {
+    id: 6,
+    category: 'Adicionar ao carrinho',
+    description:
+      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
+    title: 'Pizza Marguerita6',
+    infos: [],
+    image: pizza
   }
 ]
 
 const Categories = () => (
   <>
     <HeaderCarrinho />
-    <ProductsList clothes={promocoes} title="Promoções" background="cor1" />
+    <BannerBuy />
+    <ProductsListBuy clothes={promocoes} title="" background="cor1" />
   </>
 )
 

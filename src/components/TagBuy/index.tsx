@@ -1,14 +1,14 @@
-import { TagContainer } from './styles'
+import { TagContainerBuy } from './styles'
 
 export type Props = {
   size?: 'small' | 'big'
   children: string
 }
 
-export const Tag = ({ children, size = 'small' }: Props) => (
-  <TagContainer size={size}>{children}</TagContainer>
+export const Tagbuy = ({ children, size = 'small' }: Props) => (
+  <TagContainerBuy size={size}>{children}</TagContainerBuy>
 )
 
-export const TagBig = ({ children, size = 'big' }: Props) => (
-  <TagContainer size={size}>{children}</TagContainer>
+export const TagBigBuy = ({ children, size = 'big' }: Props) => (
+  <TagContainerBuy size={size}>{children}</TagContainerBuy>
 )

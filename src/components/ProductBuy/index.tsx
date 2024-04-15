@@ -8,8 +8,10 @@ import {
   Infos,
   Imagem,
   Container,
-  Nota
+  Nota,
+  Comprar
 } from './styles'
+import { TagBigBuy } from '../TagBuy'
 
 type Props = {
   title: string
@@ -41,9 +43,11 @@ const Product = ({
       {title} <Nota src={type} />
     </Titulo>
     <Descricao>{description}</Descricao>
-    <Link to="categories">
-      <TagBig>{category}</TagBig>
-    </Link>
+    <Comprar>
+      <Link to="categories">
+        <TagBigBuy>{category}</TagBigBuy>
+      </Link>
+    </Comprar>
   </Card>
 )
 

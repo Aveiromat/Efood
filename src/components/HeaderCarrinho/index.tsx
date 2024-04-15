@@ -20,7 +20,7 @@ const HeaderCarrinho = () => (
           </Link>
         </LinkItem>
       </Links>
-      <LinkCart href="#">0 - produtos(s)</LinkCart>
+      <LinkCart href="#">0 produtos(s) no carrinho</LinkCart>
     </Fundo>
   </HeaderBar>
 )

@@ -1,5 +1,5 @@
 import Clothing from '../../models/Clothing'
-import Product from '../Product'
+import ProductBuy from '../ProductBuy'
 
 import { Container, List } from './styles'
 
@@ -15,7 +15,7 @@ const ProductsList = ({ background, title, clothes }: Props) => (
       <h2>{title}</h2>
       <List>
         {clothes.map((clothing) => (
-          <Product
+          <ProductBuy
             key={clothing.id}
             category={clothing.category}
             description={clothing.description}

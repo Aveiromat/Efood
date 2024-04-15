@@ -1,20 +1,22 @@
 import styled from 'styled-components'
 import { cores } from '../../styles'
-import { TagContainer } from '../Tag/styles'
+import { TagContainerBuy } from '../TagBuy/styles'
 
 export const Card = styled.div`
   display: grid;
-  background-color: ${cores.cor3};
+  background-color: ${cores.cor1};
   margin-bottom: 4vh;
-  border: 1px solid ${cores.cor1};
+  border: 5px solid ${cores.cor1};
   position: relative;
+  padding-bottom: 4px;
 
-  ${TagContainer} {
+  ${TagContainerBuy} {
     margin-left: 8px;
   }
 `
 
 export const Titulo = styled.h3`
+  color: ${cores.cor3};
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -27,6 +29,7 @@ export const Titulo = styled.h3`
 `
 
 export const Descricao = styled.p`
+  color: ${cores.cor3};
   font-size: 14px;
   line-height: 22px;
   padding: 4px;
@@ -49,7 +52,6 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 216px;
   overflow: hidden;
 `
 
@@ -57,4 +59,10 @@ export const Imagem = styled.img`
   width: 100%;
   height: auto;
 `
+
+export const Comprar = styled.a`
+  display: flex;
+  justify-content: center;
+`
+
 export const Nota = styled.img``
