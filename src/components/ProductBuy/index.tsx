@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { Tag, TagBig } from '../Tag'
+import { Tag } from '../Tag'
 
 import {
   Card,

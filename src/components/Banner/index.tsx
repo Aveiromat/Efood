@@ -4,7 +4,6 @@ import {
   HeaderBar,
   Links,
   LinkItem,
-  LinkCart,
   Logo,
   Fundo,
   Chamariz

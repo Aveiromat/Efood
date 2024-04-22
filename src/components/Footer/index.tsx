@@ -3,7 +3,6 @@ import {
   Container,
   CopyRight,
   FooterSection,
-  Links,
   Logo,
   RedesSociais,
   SectionTitle
