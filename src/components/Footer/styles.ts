@@ -42,3 +42,10 @@ export const RedesSociais = styled.img`
   justify-self: center;
   padding-bottom: 48px;
 `
+
+export const CopyRight = styled.p`
+  font-size: 10px;
+  margin-top: 32px;
+  max-width: 480px;
+  font-weight: 400;
+`

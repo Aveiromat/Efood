@@ -12,8 +12,10 @@ export const Container = styled.section<Omit<Props, 'title' | 'clothes'>>`
 
 export const List = styled.ul`
   display: grid;
+  max-width: 1024px;
   grid-template-columns: 1fr 1fr;
-  column-gap: 24px;
+  column-gap: 56px;
+  grid-row-gap: 8px;
   margin-top: 8vh;
   margin-bottom: 8vh;
 `

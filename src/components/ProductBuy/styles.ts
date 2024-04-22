@@ -11,7 +11,10 @@ export const Card = styled.div`
   padding-bottom: 4px;
 
   ${TagContainerBuy} {
+    display: flex;
+    justify-content: center;
     margin-left: 8px;
+    margin-right: 8px;
   }
 `
 
@@ -61,7 +64,6 @@ export const Imagem = styled.img`
 `
 
 export const Comprar = styled.a`
-  display: flex;
   justify-content: center;
 `
 

@@ -8,7 +8,8 @@ import {
   Infos,
   Imagem,
   Container,
-  Nota
+  Nota,
+  Border
 } from './styles'
 
 type Props = {
@@ -32,18 +33,20 @@ const Product = ({
     <Container>
       <Imagem src={image} alt={title} />
     </Container>
-    <Infos>
-      {infos.map((info) => (
-        <Tag key={info}>{info}</Tag>
-      ))}
-    </Infos>
-    <Titulo>
-      {title} <Nota src={type} />
-    </Titulo>
-    <Descricao>{description}</Descricao>
-    <Link to="categories">
-      <TagBig>{category}</TagBig>
-    </Link>
+    <Border>
+      <Infos>
+        {infos.map((info) => (
+          <Tag key={info}>{info}</Tag>
+        ))}
+      </Infos>
+      <Titulo>
+        {title} <Nota src={type} />
+      </Titulo>
+      <Descricao>{description}</Descricao>
+      <Link to="categories">
+        <TagBig>{category}</TagBig>
+      </Link>
+    </Border>
   </Card>
 )
 

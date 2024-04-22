@@ -1,9 +1,33 @@
-import { Imagem, Titulo, Precos } from './styles'
+import { Link } from 'react-router-dom'
 
-import bannerImg from '../../assets/images/banner.png'
+import {
+  HeaderBar,
+  Links,
+  LinkItem,
+  LinkCart,
+  Logo,
+  Fundo,
+  Chamariz
+} from './styles'
+
+import efood from '../../assets/images/efood.png'
+import fundo from '../../assets/images/fundo.png'
 
 const Banner = () => (
-  <Imagem style={{ backgroundImage: `url(${bannerImg})` }}></Imagem>
+  <HeaderBar>
+    <Fundo style={{ backgroundImage: `url(${fundo})` }}>
+      <Links>
+        <LinkItem>
+          <Link to="/">
+            <Logo src={efood} />
+          </Link>
+        </LinkItem>
+      </Links>
+      <Chamariz>
+        Viva experiências gastronômicas no conforto da sua casa
+      </Chamariz>
+    </Fundo>
+  </HeaderBar>
 )
 
 export default Banner

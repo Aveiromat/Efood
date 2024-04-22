@@ -11,33 +11,34 @@ export const HeaderBar = styled.header`
     text-decoration: none;
     font-weight: bold;
     align-items: center;
+    font-size: 18px;
   }
 
   div {
-    display: flex;
+    height: 184px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
   }
 `
 
 export const Links = styled.ul`
   display: flex;
-  margin-left: 40px;
+  justify-content: center;
 `
 
 export const LinkItem = styled.li`
-  margin-right: 16px;
   justify-content: center;
 `
 
 export const LinkCart = styled.a`
   display: flex;
-
-  img {
-    margin-left: 16px;
-  }
+  justify-content: center;
 `
 
-export const Logo = styled.img``
+export const Logo = styled.img`
+  justify-content: center;
+`
 
 export const Fundo = styled.div`
   background-repeat: no-repeat;

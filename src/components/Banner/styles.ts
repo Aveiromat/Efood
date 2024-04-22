@@ -1,41 +1,61 @@
 import styled from 'styled-components'
 import { cores } from '../../styles'
-import { TagContainer } from '../Tag/styles'
 
-export const Imagem = styled.div`
-  width: 100vw;
-  height: 384px;
-  display: block;
+export const HeaderBar = styled.header`
+  background-color: ${cores.cor3};
+  border-radius: 16px;
+  display: flex;
+
+  a {
+    color: ${cores.cor1};
+    text-decoration: none;
+    font-weight: bold;
+    align-self: center;
+    justify-content: center;
+    max-width: 539px;
+    text-align: center;
+  }
+
+  div {
+    display: grid;
+    grid-template-rows: auto auto;
+  }
+`
+
+export const Links = styled.ul`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
+export const LinkItem = styled.li`
+  justify-content: center;
+`
+
+export const LinkCart = styled.a`
+  display: flex;
+
+  img {
+    margin-left: 16px;
+  }
+`
+
+export const Chamariz = styled.a`
+  grid-row: 3;
+  font-size: 36px;
+`
+
+export const Logo = styled.img`
+  margin-top: 16px;
+`
+
+export const Fundo = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   color: ${cores.cor1};
-
-  .container {
-    position: relative;
-    padding-top: 360px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-  }
-
-  ${TagContainer} {
-    position: absolute;
-    top: 32px;
-  }
-`
-
-export const Titulo = styled.h2`
-font-size: 36px;
-font weight: bold;
-max-width: 450;
-`
-
-export const Precos = styled.p`
-  font-size: 24px;
-  margin-top: 24px;
-
-  span {
-    text-decoration: line-through;
-  }
+  width: 100%;
+  height: 384px;
+  align-items: center;
+  justify-content: center;
 `

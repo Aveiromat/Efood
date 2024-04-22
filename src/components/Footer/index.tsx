@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import {
   Container,
+  CopyRight,
   FooterSection,
   Links,
   Logo,
@@ -20,11 +21,11 @@ const Footer = () => (
         <Logo src={ImagemLogo} />
       </Link>
       <RedesSociais src={ImagemRedesSocias} />
-      <p>
+      <CopyRight>
         A efood é uma plataforma para divulgação de estabelecimentos, a
         responsabilidade pela entrega, qualidade dos produtos é toda do
         estabelecimento contratado.{' '}
-      </p>
+      </CopyRight>
     </FooterSection>
   </Container>
 )

@@ -6,12 +6,16 @@ export const Card = styled.div`
   display: grid;
   background-color: ${cores.cor3};
   margin-bottom: 4vh;
-  border: 1px solid ${cores.cor1};
   position: relative;
 
   ${TagContainer} {
     margin-left: 8px;
   }
+`
+
+export const Border = styled.div`
+  border: 1px solid ${cores.cor1};
+  border-top: none;
 `
 
 export const Titulo = styled.h3`

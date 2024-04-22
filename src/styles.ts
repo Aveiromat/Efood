@@ -14,6 +14,7 @@ export const GlobalCss = createGlobalStyle`
     box-sizing: border-box;
     font-family: Roboto, sans-serif;
     list-style: none;
+    max-width: 100vw;
     overflow-x: hidden;
     text-decoration: none;
   }

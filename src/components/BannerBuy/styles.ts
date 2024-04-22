@@ -4,8 +4,9 @@ import { TagContainer } from '../Tag/styles'
 
 export const Imagem = styled.div`
   display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
   width: 100vw;
-  height: 384px;
+  height: 282px;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -28,6 +29,7 @@ export const Imagem = styled.div`
 
 export const Titulo = styled.h2`
   font-size: 32px;
+  grid-row: 3;
   font-weight: bold;
   align-self: center;
   color: ${cores.cor4};
