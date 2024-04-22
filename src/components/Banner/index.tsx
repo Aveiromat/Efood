@@ -1,13 +1,6 @@
 import { Link } from 'react-router-dom'
 
-import {
-  HeaderBar,
-  Links,
-  LinkItem,
-  Logo,
-  Fundo,
-  Chamariz
-} from './styles'
+import { HeaderBar, Links, LinkItem, Logo, Fundo, Chamariz } from './styles'
 
 import efood from '../../assets/images/efood.png'
 import fundo from '../../assets/images/fundo.png'

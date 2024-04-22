@@ -3,7 +3,8 @@ import { cores } from '../../styles'
 import { TagContainer } from '../Tag/styles'
 
 export const Imagem = styled.div`
-  display: grid;
+  display: flex;
+  justify-content: center;
   grid-template-rows: 1fr 1fr 1fr;
   width: 100vw;
   height: 282px;
@@ -11,7 +12,6 @@ export const Imagem = styled.div`
   background-size: cover;
   background-position: center;
   color: ${cores.cor1};
-  padding-left: 320px;
 
   .container {
     position: relative;
@@ -25,6 +25,18 @@ export const Imagem = styled.div`
     position: absolute;
     top: 32px;
   }
+`
+
+export const Alinhar = styled.div`
+  max-width: 1042px;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  width: 100vw;
+  height: 282px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: ${cores.cor1};
 `
 
 export const Titulo = styled.h2`

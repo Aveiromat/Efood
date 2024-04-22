@@ -5,6 +5,7 @@ export const HeaderBar = styled.header`
   background-color: ${cores.cor3};
   border-radius: 16px;
   display: flex;
+  justify-content: center;
 
   a {
     color: ${cores.cor1};
@@ -19,10 +20,16 @@ export const HeaderBar = styled.header`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
+    max-width: 1024px;
   }
 `
 
 export const Links = styled.ul`
+  display: flex;
+  justify-content: flex-start;
+`
+
+export const LinksLogo = styled.ul`
   display: flex;
   justify-content: center;
 `
@@ -33,7 +40,7 @@ export const LinkItem = styled.li`
 
 export const LinkCart = styled.a`
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
 `
 
 export const Logo = styled.img`
