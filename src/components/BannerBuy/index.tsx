@@ -1,12 +1,17 @@
 import { Imagem, Titulo, Precos, Alinhar } from './styles'
 
+export type Props = {
+  titulo: string
+  tipo: string
+}
+
 import LaDolceCapa from '../../assets/images/LaDolceCapa.png'
 
-const BannerBuy = () => (
+const BannerBuy = ({ titulo, tipo }: Props) => (
   <Imagem style={{ backgroundImage: `url(${LaDolceCapa})` }}>
     <Alinhar>
-      <Precos>Italiana</Precos>
-      <Titulo>La Dolce Vita Trattoria</Titulo>
+      <Precos>{tipo}</Precos>
+      <Titulo>{titulo}</Titulo>
     </Alinhar>
   </Imagem>
 )

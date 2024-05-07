@@ -1,3 +1,5 @@
+import { useParams } from 'react-router-dom'
+
 import Clothing from '../../models/Clothing'
 
 import HeaderCarrinho from '../../components/HeaderCarrinho'
@@ -119,12 +121,17 @@ const lancamentos: Clothing[] = [
   }
 ]
 
-const Categories = () => (
-  <>
-    <HeaderCarrinho />
-    <BannerBuy />
-    <ProductsListBuy clothes={promocoes} title="" background="cor1" />
-  </>
-)
+const Categories = () => {
+  const { id } = useParams()
+
+  return (
+    <>
+      <HeaderCarrinho />
+      <BannerBuy titulo="titulo" tipo="tipo" />
+      <h1>{id}</h1>
+      <ProductsListBuy clothes={promocoes} title="" background="cor1" />
+    </>
+  )
+}
 
 export default Categories
