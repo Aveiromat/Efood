@@ -95,8 +95,8 @@ export const Item = styled.li`
   > img {
     border: 2px solid ${cores.cor1};
     border-radius: 8px;
-    width: 150px;
-    height: 150px;
+    width: 280px;
+    height: 280px;
     object-fit: cover;
   }
 
@@ -134,10 +134,13 @@ export const Modal = styled.div`
 `
 
 export const ModalContent = styled.div`
+  display: flex;
+  grid-template-columns: 1fr 1fr;
   width: 1024px;
   Height: 344px;
   position: relative;
   z-index 1;
+  background-color: ${cores.cor1};
 
   header {
     display: flex;

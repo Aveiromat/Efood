@@ -78,29 +78,27 @@ const Product = ({
         </Comprar>
       </Card>
       {mock.map((media, index) => (
-        // aa
         <Modal className={modalEstaAberto ? 'visivel' : ''} key={media.foto}>
           <ModalContent className="Container">
             <Item key={media.foto}>
+              <header>
+                <Titulo>{media.nome}</Titulo>
+                <img
+                  src={close}
+                  alt="icone de fechar"
+                  onClick={() => setModalEstaAberto(false)}
+                />
+              </header>
               <img src={media.foto} alt={`aa ${index + 1}`} />
-              <h4>
+              <Descricao>
                 {media.preco},{media.id},{media.nome},{media.descricao},
                 {media.porcao}, index = {media.id + 1}
-              </h4>
+              </Descricao>
+              <TagBigBuy>{category}</TagBigBuy>
             </Item>
-            <header>
-              <h4>{media.nome}</h4>
-              <img
-                src={close}
-                alt="icone de fechar"
-                onClick={() => setModalEstaAberto(false)}
-              />
-            </header>
-            <img src={macarrao} alt="" />
           </ModalContent>
           <div className="overlay"></div>
         </Modal>
-        // aa
       ))}
     </>
   )
