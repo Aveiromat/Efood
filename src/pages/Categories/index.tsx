@@ -6,7 +6,6 @@ import HeaderCarrinho from '../../components/HeaderCarrinho'
 import pizza from '../../assets/images/pizza.png'
 import ProductsListBuy from '../../components/ProductsListBuy'
 import BannerBuy from '../../components/BannerBuy'
-import Buy from '../../components/Buy'
 
 const promocoes: Clothing[] = [
   {
@@ -131,7 +130,6 @@ const Categories = () => {
       <BannerBuy titulo="titulo" tipo="tipo" />
       <h1>{id}</h1>
       <ProductsListBuy clothes={promocoes} title="" background="cor1" />
-      <Buy></Buy>
     </>
   )
 }

@@ -1,12 +1,9 @@
 import { Link } from 'react-router-dom'
 import { Tag } from '../Tag'
-
 import { Item, Items, Action, Modal, ModalContent, Center } from './styles'
-
 import close from '../../assets/images/close.png'
 import macarrao from '../../assets/images/macarrao.png'
 import { useState } from 'react'
-
 import {
   Card,
   Descricao,
@@ -49,16 +46,42 @@ const mock: BuyItem[] = [
   }
 ]
 
-const [modalEstaAberto, setModalEstaAberto] = useState(false)
-
-const Buy = () => {
+const Product = ({
+  title,
+  category,
+  type,
+  description,
+  infos,
+  image
+}: Props) => {
+  const [modalEstaAberto, setModalEstaAberto] = useState(false)
 
   return (
     <>
+      <Card>
+        <Container>
+          <Imagem src={image} alt={title} />
+        </Container>
+        <Infos>
+          {infos.map((info) => (
+            <Tag key={info}>{info}</Tag>
+          ))}
+        </Infos>
+        <Titulo>
+          {title} <Nota src={type} />
+        </Titulo>
+        <Descricao>{description}</Descricao>
+        <Comprar>
+          <a onClick={() => setModalEstaAberto(true)}>
+            <TagBigBuy>{category}</TagBigBuy>
+          </a>
+        </Comprar>
+      </Card>
       {mock.map((media, index) => (
+        // aa
         <Modal className={modalEstaAberto ? 'visivel' : ''} key={media.foto}>
           <ModalContent className="Container">
-            <Item key={media.foto} onClick={() => setModalEstaAberto}>
+            <Item key={media.foto}>
               <img src={media.foto} alt={`aa ${index + 1}`} />
               <h4>
                 {media.preco},{media.id},{media.nome},{media.descricao},
@@ -67,44 +90,20 @@ const Buy = () => {
             </Item>
             <header>
               <h4>{media.nome}</h4>
-              <img src={close} alt="icone de fechar" />
+              <img
+                src={close}
+                alt="icone de fechar"
+                onClick={() => setModalEstaAberto(false)}
+              />
             </header>
             <img src={macarrao} alt="" />
           </ModalContent>
           <div className="overlay"></div>
         </Modal>
+        // aa
       ))}
     </>
   )
 }
-
-const Product = ({
-  title,
-  category,
-  type,
-  description,
-  infos,
-  image
-}: Props) => (
-  <Card>
-    <Container>
-      <Imagem src={image} alt={title} />
-    </Container>
-    <Infos>
-      {infos.map((info) => (
-        <Tag key={info}>{info}</Tag>
-      ))}
-    </Infos>
-    <Titulo>
-      {title} <Nota src={type} />
-    </Titulo>
-    <Descricao>{description}</Descricao>
-    <Comprar onClick={() => setModalEstaAberto}>
-      <button>
-        <TagBigBuy>{category}</TagBigBuy>
-      </button>
-    </Comprar>
-  </Card>
-)
 
 export default Product

@@ -65,6 +65,7 @@ export const Imagem = styled.img`
 
 export const Comprar = styled.a`
   justify-content: center;
+  cursor: pointer;
 `
 
 export const Nota = styled.img``
@@ -133,7 +134,8 @@ export const Modal = styled.div`
 `
 
 export const ModalContent = styled.div`
-  max-width: 960px;
+  width: 1024px;
+  Height: 344px;
   position: relative;
   z-index 1;
 
