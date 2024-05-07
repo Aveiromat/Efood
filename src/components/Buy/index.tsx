@@ -1,6 +1,8 @@
-import { Item } from './styles'
+import { Item, Items, Action, Modal, ModalContent, Center } from './styles'
 
+import close from '../../assets/images/close.png'
 import macarrao from '../../assets/images/macarrao.png'
+import { useState } from 'react'
 
 type BuyItem = {
   foto: string
@@ -23,17 +25,32 @@ const mock: BuyItem[] = [
   }
 ]
 
-const Buy = () => (
-  <>
-    {mock.map((media, index) => (
-      <Item key={media.foto}>
-        <img src={media.foto} alt={`aa ${index + 1}`} />
-        <h4>
-          {media.preco},{media.id},{media.nome},{media.descricao},{media.porcao}
-        </h4>
-      </Item>
-    ))}
-  </>
-)
+const Buy = () => {
+  const [modalEstaAberto, setModalEstaAberto] = useState(false)
+
+  return (
+    <>
+      {mock.map((media, index) => (
+        <Modal className={modalEstaAberto ? 'visivel' : ''} key={media.foto}>
+          <ModalContent className="Container">
+            <Item key={media.foto} onClick={() => setModalEstaAberto}>
+              <img src={media.foto} alt={`aa ${index + 1}`} />
+              <h4>
+                {media.preco},{media.id},{media.nome},{media.descricao},
+                {media.porcao}, index = {media.id + 1}
+              </h4>
+            </Item>
+            <header>
+              <h4>{media.nome}</h4>
+              <img src={close} alt="icone de fechar" />
+            </header>
+            <img src={macarrao} alt="" />
+          </ModalContent>
+          <div className="overlay"></div>
+        </Modal>
+      ))}
+    </>
+  )
+}
 
 export default Buy
