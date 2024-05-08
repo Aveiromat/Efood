@@ -1,20 +1,14 @@
-import { Link } from 'react-router-dom'
 import { Tag } from '../Tag'
 import {
   Item,
-  Items,
-  Action,
   Modal,
   ModalContent,
-  Center,
   ItemImagem,
-  ItemCompra,
   Fechar,
   TituloCompra,
   DescricaoCompra
 } from './styles'
 import close from '../../assets/images/close.png'
-import macarrao from '../../assets/images/macarrao.png'
 import { useState } from 'react'
 import {
   Card,
@@ -26,7 +20,7 @@ import {
   Nota,
   Comprar
 } from './styles'
-import { TagBigBuy } from '../TagBuy'
+import { TagBigBuy, TagComprar } from '../TagBuy'
 
 type Props = {
   title: string
@@ -105,11 +99,17 @@ const Product = ({
               </header>
               <TituloCompra>{media.nome}</TituloCompra>
               <DescricaoCompra>
-                {media.preco},{media.id},{media.nome},{media.descricao}, index ={' '}
-                {media.id + 1}, <br />
-                <br /> {media.porcao}
+                {media.descricao}
+                <br />
+                <br /> Serve de {media.porcao}
               </DescricaoCompra>
-              <TagBigBuy>{category}</TagBigBuy>
+              <TagComprar>
+                Adicionar ao carrinho -{' '}
+                {new Intl.NumberFormat('pt-BR', {
+                  style: 'currency',
+                  currency: 'BRL'
+                }).format(media.preco)}
+              </TagComprar>
             </Item>
           </ModalContent>
           <div className="overlay"></div>
@@ -118,5 +118,9 @@ const Product = ({
     </>
   )
 }
+
+// {media.preco},{media.id},{media.nome},{media.descricao}, index ={' '}
+//                 {media.id + 1}, <br />
+//                 <br /> Serve de {media.porcao}
 
 export default Product

@@ -234,6 +234,7 @@ export const TituloCompra = styled.h3`
 
 export const DescricaoCompra = styled.p`
   color: ${cores.cor3};
+  font-weight: 400;
   font-size: 14px;
   line-height: 22px;
   padding: 4px;
