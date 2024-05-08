@@ -7,6 +7,7 @@ export const Card = styled.div`
   background-color: ${cores.cor3};
   margin-bottom: 4vh;
   position: relative;
+  border: 1px solid ${cores.cor1};
 
   ${TagContainer} {
     margin-left: 8px;
@@ -14,13 +15,12 @@ export const Card = styled.div`
 `
 
 export const Border = styled.div`
-  border: 1px solid ${cores.cor1};
   border-top: none;
 `
 
 export const Titulo = styled.h3`
   display: flex;
-  align-items: center;
+  align-items: end;
   justify-content: space-between;
   margin-top: 4px;
   font-weight: bold;
@@ -58,7 +58,16 @@ export const Container = styled.div`
 `
 
 export const Imagem = styled.img`
+  border: none;
   width: 100%;
   height: auto;
 `
-export const Nota = styled.img``
+
+export const Nota = styled.a`
+  position: absolute;
+  right: 36px;
+`
+
+export const Star = styled.img`
+  margin-bottom: 0;
+`

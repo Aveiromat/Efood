@@ -1,4 +1,5 @@
 import Clothing from '../../models/Clothing'
+import { Restaurante } from '../../pages/Home'
 import Product from '../Product'
 
 import { Container, List } from './styles'
@@ -6,7 +7,7 @@ import { Container, List } from './styles'
 export type Props = {
   title: string
   background: 'cor3' | 'cor1'
-  clothes: Clothing[]
+  clothes: Restaurante[]
 }
 
 const ProductsList = ({ background, title, clothes }: Props) => (
@@ -17,12 +18,11 @@ const ProductsList = ({ background, title, clothes }: Props) => (
         {clothes.map((clothing) => (
           <Product
             key={clothing.id}
-            category={clothing.category}
-            description={clothing.description}
-            image={clothing.image}
-            infos={clothing.infos}
-            type={clothing.type}
-            title={clothing.title}
+            category={clothing.tipo}
+            description={clothing.descricao}
+            image={clothing.cardapio[0].foto}
+            type={clothing.avaliacao}
+            title={clothing.titulo}
           />
         ))}
       </List>

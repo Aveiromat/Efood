@@ -22,6 +22,8 @@ import {
 } from './styles'
 import { TagBigBuy, TagComprar } from '../TagBuy'
 
+import { Restaurante } from '../../pages/Home'
+
 type Props = {
   title: string
   category: string
@@ -112,7 +114,10 @@ const Product = ({
               </TagComprar>
             </Item>
           </ModalContent>
-          <div className="overlay"></div>
+          <div
+            onClick={() => setModalEstaAberto(false)}
+            className="overlay"
+          ></div>
         </Modal>
       ))}
     </>
