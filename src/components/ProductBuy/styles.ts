@@ -134,8 +134,8 @@ export const Modal = styled.div`
 `
 
 export const ModalContent = styled.div`
-  display: flex;
-  grid-template-columns: 1fr 1fr;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
   width: 1024px;
   Height: 344px;
   position: relative;
@@ -172,4 +172,74 @@ export const Center = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`
+
+export const ItemImagem = styled.li`
+  align-self: center;
+  justify-self: center;
+  position: relative;
+
+  > img {
+    width: 280px;
+    height: 280px;
+    object-fit: cover;
+  }
+
+  &:hover {
+    ${Action} {
+      opacity: 1;
+      transition: opacity 0.5s ease;
+    }
+  }
+`
+
+export const ItemCompra = styled.li`
+  align-self: center;
+  justify-self: center;
+  position: relative;
+
+  > img {
+    width: 280px;
+    height: 280px;
+    object-fit: cover;
+  }
+
+  &:hover {
+    ${Action} {
+      opacity: 1;
+      transition: opacity 0.5s ease;
+    }
+  }
+`
+
+export const Fechar = styled.img`
+  position: absolute;
+  right: 0;
+  top: 16px;
+  width: 16px;
+  height: 16px;
+`
+
+export const TituloCompra = styled.h3`
+  color: ${cores.cor3};
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 4px;
+  font-weight: bold;
+  font-size: 16px;
+  padding: 4px;
+  margin-top: 32px;
+`
+
+export const DescricaoCompra = styled.p`
+  color: ${cores.cor3};
+  font-size: 14px;
+  line-height: 22px;
+  padding: 4px;
+  padding-right: 8px;
+  display: block;
+  margin-top: 16px;
+  margin-bottom: 4px;
+  text-align: justify;
 `

@@ -1,6 +1,18 @@
 import { Link } from 'react-router-dom'
 import { Tag } from '../Tag'
-import { Item, Items, Action, Modal, ModalContent, Center } from './styles'
+import {
+  Item,
+  Items,
+  Action,
+  Modal,
+  ModalContent,
+  Center,
+  ItemImagem,
+  ItemCompra,
+  Fechar,
+  TituloCompra,
+  DescricaoCompra
+} from './styles'
 import close from '../../assets/images/close.png'
 import macarrao from '../../assets/images/macarrao.png'
 import { useState } from 'react'
@@ -80,20 +92,23 @@ const Product = ({
       {mock.map((media, index) => (
         <Modal className={modalEstaAberto ? 'visivel' : ''} key={media.foto}>
           <ModalContent className="Container">
+            <ItemImagem key={media.foto}>
+              <img src={media.foto} alt={`aa ${index + 1}`} />
+            </ItemImagem>
             <Item key={media.foto}>
               <header>
-                <Titulo>{media.nome}</Titulo>
-                <img
+                <Fechar
                   src={close}
                   alt="icone de fechar"
                   onClick={() => setModalEstaAberto(false)}
                 />
               </header>
-              <img src={media.foto} alt={`aa ${index + 1}`} />
-              <Descricao>
-                {media.preco},{media.id},{media.nome},{media.descricao},
-                {media.porcao}, index = {media.id + 1}
-              </Descricao>
+              <TituloCompra>{media.nome}</TituloCompra>
+              <DescricaoCompra>
+                {media.preco},{media.id},{media.nome},{media.descricao}, index ={' '}
+                {media.id + 1}, <br />
+                <br /> {media.porcao}
+              </DescricaoCompra>
               <TagBigBuy>{category}</TagBigBuy>
             </Item>
           </ModalContent>
