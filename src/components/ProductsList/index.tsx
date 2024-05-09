@@ -23,6 +23,7 @@ const ProductsList = ({ background, title, clothes }: Props) => (
             image={clothing.cardapio[0].foto}
             type={clothing.avaliacao}
             title={clothing.titulo}
+            id={clothing.id}
           />
         ))}
       </List>

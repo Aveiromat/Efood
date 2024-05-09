@@ -4,6 +4,7 @@ import { TagContainer } from '../Tag/styles'
 
 export const Card = styled.div`
   display: grid;
+  grid-template-rows: max-content;
   background-color: ${cores.cor3};
   margin-bottom: 4vh;
   position: relative;
@@ -15,7 +16,8 @@ export const Card = styled.div`
 `
 
 export const Border = styled.div`
-  border-top: none;
+  overflow-y: hidden;
+  display: grid;
 `
 
 export const Titulo = styled.h3`
@@ -70,4 +72,11 @@ export const Nota = styled.a`
 
 export const Star = styled.img`
   margin-bottom: 0;
+`
+
+export const Grid = styled.div`
+  display: grid;
+  height: 100%;
+  align-self: end;
+  align-items: end;
 `
