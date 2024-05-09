@@ -25,11 +25,11 @@ import { TagBigBuy, TagComprar } from '../TagBuy'
 import { Restaurante } from '../../pages/Home'
 
 type Props = {
+  id: string | number
   title: string
   category: string
-  type?: string
+  type?: number
   description: string
-  infos: string[]
   image: string
 }
 
@@ -54,14 +54,7 @@ const mock: BuyItem[] = [
   }
 ]
 
-const Product = ({
-  title,
-  category,
-  type,
-  description,
-  infos,
-  image
-}: Props) => {
+const Product = ({ title, category, type, description, image }: Props) => {
   const [modalEstaAberto, setModalEstaAberto] = useState(false)
 
   return (
@@ -70,14 +63,7 @@ const Product = ({
         <Container>
           <Imagem src={image} alt={title} />
         </Container>
-        <Infos>
-          {infos.map((info) => (
-            <Tag key={info}>{info}</Tag>
-          ))}
-        </Infos>
-        <Titulo>
-          {title} <Nota src={type} />
-        </Titulo>
+        <Titulo>{title}</Titulo>
         <Descricao>{description}</Descricao>
         <Comprar>
           <a onClick={() => setModalEstaAberto(true)}>

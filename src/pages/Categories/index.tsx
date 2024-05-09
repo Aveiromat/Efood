@@ -6,129 +6,41 @@ import HeaderCarrinho from '../../components/HeaderCarrinho'
 import pizza from '../../assets/images/pizza.png'
 import ProductsListBuy from '../../components/ProductsListBuy'
 import BannerBuy from '../../components/BannerBuy'
+import { useEffect, useState } from 'react'
 
-const promocoes: Clothing[] = [
-  {
-    id: 1,
-    category: 'Adicionar ao carrinho',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    title: 'Pizza Marguerita',
-    infos: [],
-    image: pizza
-  },
-  {
-    id: 2,
-    category: 'Adicionar ao carrinho',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    title: 'Pizza Marguerita2',
-    infos: [],
-    image: pizza
-  },
-  {
-    id: 3,
-    category: 'Adicionar ao carrinho',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    title: 'Pizza Marguerita3',
-    infos: [],
-    image: pizza
-  },
-  {
-    id: 4,
-    category: 'Adicionar ao carrinho',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    title: 'Pizza Marguerita4',
-    infos: [],
-    image: pizza
-  },
-  {
-    id: 5,
-    category: 'Adicionar ao carrinho',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    title: 'Pizza Marguerita5',
-    infos: [],
-    image: pizza
-  },
-  {
-    id: 6,
-    category: 'Adicionar ao carrinho',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    title: 'Pizza Marguerita6',
-    infos: [],
-    image: pizza
-  }
-]
+export interface ItemCardapio {
+  foto: string
+  preco: number
+  id: number
+  nome: string
+  descricao: string
+  porcao: string
+}
 
-const lancamentos: Clothing[] = [
-  {
-    id: 1,
-    category: 'Adicionar ao carrinho',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    title: 'Pizza Marguerita',
-    infos: [],
-    image: pizza
-  },
-  {
-    id: 2,
-    category: 'Adicionar ao carrinho',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    title: 'Pizza Marguerita2',
-    infos: [],
-    image: pizza
-  },
-  {
-    id: 3,
-    category: 'Adicionar ao carrinho',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    title: 'Pizza Marguerita3',
-    infos: [],
-    image: pizza
-  },
-  {
-    id: 4,
-    category: 'Adicionar ao carrinho',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    title: 'Pizza Marguerita4',
-    infos: [],
-    image: pizza
-  },
-  {
-    id: 5,
-    category: 'Adicionar ao carrinho',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    title: 'Pizza Marguerita5',
-    infos: [],
-    image: pizza
-  },
-  {
-    id: 6,
-    category: 'Adicionar ao carrinho',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    title: 'Pizza Marguerita6',
-    infos: [],
-    image: pizza
-  }
-]
+export interface Restaurante {
+  id: number
+  titulo: string
+  destacado: boolean
+  tipo: string
+  avaliacao: number
+  descricao: string
+  capa: string
+  cardapio: ItemCardapio[]
+}
 
 const Categories = () => {
-  const { id } = useParams()
+  const [promocoes, setPromocoes] = useState<Restaurante[]>([])
+
+  useEffect(() => {
+    fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
+      .then((res) => res.json())
+      .then((res) => setPromocoes(res))
+  }, [])
 
   return (
     <>
       <HeaderCarrinho />
       <BannerBuy titulo="titulo" tipo="tipo" />
-      <h1>{id}</h1>
       <ProductsListBuy clothes={promocoes} title="" background="cor1" />
     </>
   )

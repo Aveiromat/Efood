@@ -1,4 +1,3 @@
-import Clothing from '../../models/Clothing'
 import { Restaurante } from '../../pages/Home'
 import Product from '../Product'
 
