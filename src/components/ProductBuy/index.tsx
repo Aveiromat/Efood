@@ -22,8 +22,6 @@ import {
 } from './styles'
 import { TagBigBuy, TagComprar } from '../TagBuy'
 
-import { Restaurante } from '../../pages/Home'
-
 type Props = {
   id: string | number
   title: string

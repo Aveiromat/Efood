@@ -1,9 +1,5 @@
 import { useParams } from 'react-router-dom'
-
-import Clothing from '../../models/Clothing'
-
 import HeaderCarrinho from '../../components/HeaderCarrinho'
-import pizza from '../../assets/images/pizza.png'
 import ProductsListBuy from '../../components/ProductsListBuy'
 import BannerBuy from '../../components/BannerBuy'
 import { useEffect, useState } from 'react'
@@ -30,6 +26,7 @@ export interface Restaurante {
 
 const Categories = () => {
   const [promocoes, setPromocoes] = useState<Restaurante[]>([])
+  const { id } = useParams() // Obtendo o ID da página usando useParams
 
   useEffect(() => {
     fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
@@ -41,7 +38,10 @@ const Categories = () => {
     <>
       <HeaderCarrinho />
       <BannerBuy titulo="titulo" tipo="tipo" />
-      <ProductsListBuy clothes={promocoes} title="" background="cor1" />
+      {/* Certifique-se de que 'id' seja definido antes de passá-lo como propriedade */}
+      {id && (
+        <ProductsListBuy title="" pageId={parseInt(id)} background="cor1" />
+      )}
     </>
   )
 }
