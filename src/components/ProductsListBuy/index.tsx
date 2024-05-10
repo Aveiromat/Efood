@@ -20,7 +20,7 @@ export interface Props {
 
 const ProductsListBuy = ({ background }: Props) => {
   const [restaurants, setRestaurants] = useState<Restaurante[]>([])
-  const { id } = useParams() // Obtendo o ID da página usando useParams
+  const { id } = useParams()
 
   useEffect(() => {
     fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
@@ -28,7 +28,6 @@ const ProductsListBuy = ({ background }: Props) => {
       .then((res) => setRestaurants(res))
   }, [])
 
-  // Filtrando os restaurantes com base no id da URL
   const filteredRestaurant = restaurants.find(
     (restaurant) => restaurant.id.toString() === id
   )

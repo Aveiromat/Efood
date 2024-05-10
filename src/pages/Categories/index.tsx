@@ -26,7 +26,7 @@ export interface Restaurante {
 
 const Categories = () => {
   const [promocoes, setPromocoes] = useState<Restaurante[]>([])
-  const { id } = useParams() // Obtendo o ID da página usando useParams
+  const { id } = useParams()
   const [titulo, setTitulo] = useState<string>('')
   const [tipo, setTipo] = useState<string>('')
   const [capa, setCapa] = useState<string>('')

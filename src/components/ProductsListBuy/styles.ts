@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 import { Props } from '.'
 import { cores } from '../../styles'
-import { Card } from '../Product/styles'
 
 export const Container = styled.section<Omit<Props, 'title' | 'pageId'>>`
   overflow-x: hidden;
