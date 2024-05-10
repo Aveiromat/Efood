@@ -55,6 +55,11 @@ const mock: BuyItem[] = [
 const Product = ({ title, category, type, description, image }: Props) => {
   const [modalEstaAberto, setModalEstaAberto] = useState(false)
 
+  const descricaoLimitada =
+    description.length > 240
+      ? `${description.substring(0, 240)}...`
+      : description
+
   return (
     <>
       <Card>
@@ -62,10 +67,10 @@ const Product = ({ title, category, type, description, image }: Props) => {
           <Imagem src={image} alt={title} />
         </Container>
         <Titulo>{title}</Titulo>
-        <Descricao>{description}</Descricao>
+        <Descricao>{descricaoLimitada}</Descricao>
         <Comprar>
           <a onClick={() => setModalEstaAberto(true)}>
-            <TagBigBuy>{category}</TagBigBuy>
+            <TagBigBuy>Mais detalhes</TagBigBuy>
           </a>
         </Comprar>
       </Card>
@@ -107,9 +112,5 @@ const Product = ({ title, category, type, description, image }: Props) => {
     </>
   )
 }
-
-// {media.preco},{media.id},{media.nome},{media.descricao}, index ={' '}
-//                 {media.id + 1}, <br />
-//                 <br /> Serve de {media.porcao}
 
 export default Product

@@ -14,12 +14,11 @@ export interface ItemCardapio {
 }
 
 export interface Props {
-  title: string
   background: 'cor3' | 'cor1'
   pageId: number
 }
 
-const ProductsListBuy = ({ background, title }: Props) => {
+const ProductsListBuy = ({ background }: Props) => {
   const [restaurants, setRestaurants] = useState<Restaurante[]>([])
   const { id } = useParams() // Obtendo o ID da página usando useParams
 
@@ -30,31 +29,27 @@ const ProductsListBuy = ({ background, title }: Props) => {
   }, [])
 
   // Filtrando os restaurantes com base no id da URL
-  const filteredRestaurants = restaurants.filter(
+  const filteredRestaurant = restaurants.find(
     (restaurant) => restaurant.id.toString() === id
   )
 
   return (
     <Container background={background}>
       <div className="container">
-        <h2>{title}</h2>
         <List>
-          {filteredRestaurants.map((restaurant) => (
-            <div key={restaurant.id}>
-              <h3>{restaurant.titulo}</h3>
-              {restaurant.cardapio.map((item) => (
+          {filteredRestaurant &&
+            filteredRestaurant.cardapio.map((item) => (
+              <li key={item.id}>
                 <ProductBuy
-                  key={item.id}
-                  category={restaurant.tipo}
+                  category={filteredRestaurant.tipo}
                   description={item.descricao}
                   image={item.foto}
-                  type={restaurant.avaliacao}
+                  type={filteredRestaurant.avaliacao}
                   title={item.nome}
                   id={item.id}
                 />
-              ))}
-            </div>
-          ))}
+              </li>
+            ))}
         </List>
       </div>
     </Container>

@@ -27,21 +27,31 @@ export interface Restaurante {
 const Categories = () => {
   const [promocoes, setPromocoes] = useState<Restaurante[]>([])
   const { id } = useParams() // Obtendo o ID da página usando useParams
+  const [titulo, setTitulo] = useState<string>('')
+  const [tipo, setTipo] = useState<string>('')
+  const [capa, setCapa] = useState<string>('')
 
   useEffect(() => {
     fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
       .then((res) => res.json())
-      .then((res) => setPromocoes(res))
-  }, [])
+      .then((res) => {
+        setPromocoes(res)
+        const restaurante = res.find(
+          (rest: Restaurante) => rest.id.toString() === id
+        )
+        if (restaurante) {
+          setTitulo(restaurante.titulo)
+          setTipo(restaurante.tipo)
+          setCapa(restaurante.capa)
+        }
+      })
+  }, [id])
 
   return (
     <>
       <HeaderCarrinho />
-      <BannerBuy titulo="titulo" tipo="tipo" />
-      {/* Certifique-se de que 'id' seja definido antes de passá-lo como propriedade */}
-      {id && (
-        <ProductsListBuy title="" pageId={parseInt(id)} background="cor1" />
-      )}
+      <BannerBuy titulo={titulo} tipo={tipo} capa={capa} />
+      {id && <ProductsListBuy pageId={parseInt(id)} background="cor1" />}
     </>
   )
 }
