@@ -9,7 +9,7 @@ import {
   DescricaoCompra
 } from './styles'
 import close from '../../assets/images/close.png'
-import { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   Card,
   Descricao,
@@ -29,9 +29,11 @@ type Props = {
   type?: number
   description: string
   image: string
+  preco: number
+  porcao: string
 }
 
-type BuyItem = {
+type CardapioItem = {
   foto: string
   preco: number
   id: number
@@ -40,20 +42,39 @@ type BuyItem = {
   porcao: string
 }
 
-const mock: BuyItem[] = [
-  {
-    foto: 'https://fake-api-tau.vercel.app/efood/bella_tavola_italiana//1.webp',
-    preco: 69.9,
-    id: 1,
-    nome: 'Ravioli al Tartufo Nero',
-    descricao:
-      'O Ravioli al Tartufo Nero é um requintado prato de massa artesanal, que celebra os sabores ricos e terrosos da trufa negra italiana. Cada ravióli é cuidadosamente recheado com uma mistura saborosa de ricota fresca, parmesão e trufas negras raladas, proporcionando uma combinação de texturas suaves e aromas irresistíveis.',
-    porcao: '1 a 2 pessoas'
-  }
-]
+type Restaurante = {
+  id: number
+  titulo: string
+  destacado: boolean
+  tipo: string
+  avaliacao: number
+  descricao: string
+  capa: string
+  cardapio: CardapioItem[]
+}
 
-const Product = ({ title, category, type, description, image }: Props) => {
+const Product = ({
+  title,
+  category,
+  type,
+  description,
+  image,
+  preco,
+  porcao
+}: Props) => {
   const [modalEstaAberto, setModalEstaAberto] = useState(false)
+  const [restaurante, setRestaurante] = useState<Restaurante | null>(null)
+
+  useEffect(() => {
+    fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
+      .then((response) => response.json())
+      .then((data) => {
+        if (Array.isArray(data) && data.length > 0) {
+          setRestaurante(data[0])
+        }
+      })
+      .catch((error) => console.error('Erro ao buscar dados da API:', error))
+  }, [])
 
   const descricaoLimitada =
     description.length > 240
@@ -69,48 +90,55 @@ const Product = ({ title, category, type, description, image }: Props) => {
         <Titulo>{title}</Titulo>
         <Descricao>{descricaoLimitada}</Descricao>
         <Comprar>
-          <a onClick={() => setModalEstaAberto(true)}>
+          <a
+            onClick={() => {
+              console.log('Abrindo modal...')
+              setModalEstaAberto(true)
+            }}
+          >
             <TagBigBuy>Mais detalhes</TagBigBuy>
           </a>
         </Comprar>
       </Card>
-      {mock.map((media, index) => (
-        <Modal className={modalEstaAberto ? 'visivel' : ''} key={media.foto}>
-          <ModalContent className="Container">
-            <ItemImagem key={media.foto}>
-              <img src={media.foto} alt={`aa ${index + 1}`} />
-            </ItemImagem>
-            <Item key={media.foto}>
-              <header>
-                <Fechar
-                  src={close}
-                  alt="icone de fechar"
-                  onClick={() => setModalEstaAberto(false)}
-                />
-              </header>
-              <TituloCompra>{media.nome}</TituloCompra>
-              <DescricaoCompra>
-                {media.descricao}
-                <br />
-                <br /> Serve de {media.porcao}
-              </DescricaoCompra>
-              <TagComprar>
-                Adicionar ao carrinho -{' '}
-                {new Intl.NumberFormat('pt-BR', {
-                  style: 'currency',
-                  currency: 'BRL'
-                }).format(media.preco)}
-              </TagComprar>
-            </Item>
-          </ModalContent>
-          <div
-            onClick={() => setModalEstaAberto(false)}
-            className="overlay"
-          ></div>
-        </Modal>
-      ))}
+      {restaurante &&
+        restaurante.cardapio.map((item: CardapioItem) => (
+          <React.Fragment key={item.id}>
+            <Modal className={modalEstaAberto ? 'visivel' : ''} key={image}>
+              <ModalContent>
+                <ItemImagem>
+                  <img src={image} alt={title} />
+                </ItemImagem>
+                <Item key={image}>
+                  <header>
+                    <Fechar
+                      src={close}
+                      alt="icone de fechar"
+                      onClick={() => setModalEstaAberto(false)}
+                    />
+                  </header>
+                  <TituloCompra>{title}</TituloCompra>
+                  <DescricaoCompra>
+                    {description}
+                    <br />
+                    <br /> Serve de {porcao}
+                  </DescricaoCompra>
+                  <TagComprar>
+                    Adicionar ao carrinho -{' '}
+                    {new Intl.NumberFormat('pt-BR', {
+                      style: 'currency',
+                      currency: 'BRL'
+                    }).format(preco)}
+                  </TagComprar>
+                </Item>
+              </ModalContent>
+              <div
+                onClick={() => setModalEstaAberto(false)}
+                className="overlay"
+              ></div>
+            </Modal>
+          </React.Fragment>
+        ))}
     </>
   )
 }
-
 export default Product

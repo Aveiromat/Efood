@@ -41,6 +41,8 @@ const ProductsListBuy = ({ background }: Props) => {
             filteredRestaurant.cardapio.map((item) => (
               <li key={item.id}>
                 <ProductBuy
+                  porcao={item.porcao}
+                  preco={item.preco}
                   category={filteredRestaurant.tipo}
                   description={item.descricao}
                   image={item.foto}

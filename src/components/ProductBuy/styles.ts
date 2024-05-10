@@ -129,7 +129,7 @@ export const Modal = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.73);
+    background-color: rgba(0, 0, 0, 0.25);
   }
 `
 
@@ -137,10 +137,19 @@ export const ModalContent = styled.div`
   display: grid;
   grid-template-columns: 1fr 2fr;
   width: 1024px;
-  Height: 344px;
+  height: 344px;
   position: relative;
-  z-index 1;
+  z-index: 1;
   background-color: ${cores.cor1};
+  padding: 20px; /* Adicione um espaçamento interno ao redor do conteúdo */
+  color: ${cores.cor3}; /* Defina a cor do texto */
+
+  /* Adicione um estilo para o conteúdo do modal */
+  .content {
+    background-color: ${cores.cor2}; /* Defina uma cor de fundo para o conteúdo */
+    padding: 20px; /* Adicione um espaçamento interno */
+    border-radius: 8px; /* Adicione bordas arredondadas */
+  }
 
   header {
     display: flex;
@@ -154,10 +163,11 @@ export const ModalContent = styled.div`
   }
 
   > img {
-    width: 100%
+    width: 100%;
   }
 
-  img, iframe {
+  img,
+  iframe {
     display: block;
     max-width: 100%;
   }
