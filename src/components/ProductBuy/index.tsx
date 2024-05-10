@@ -120,7 +120,7 @@ const Product = ({
                   <DescricaoCompra>
                     {description}
                     <br />
-                    <br /> Serve de {porcao}
+                    <br /> Serve {porcao}
                   </DescricaoCompra>
                   <TagComprar>
                     Adicionar ao carrinho -{' '}
