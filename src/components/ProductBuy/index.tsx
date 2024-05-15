@@ -81,6 +81,14 @@ const Product = ({
       ? `${description.substring(0, 240)}...`
       : description
 
+      const Hero = ({ clothing }: Props) => {
+        const dispatch = useDispatch()
+
+        const addToCart = () => {
+          dispatch(add(clothing))
+          dispatch(open())
+        }
+
   return (
     <>
       <Card>
@@ -122,6 +130,7 @@ const Product = ({
                     <br />
                     <br /> Serve {porcao}
                   </DescricaoCompra>
+                  <a onClick={addToCart}>
                   <TagComprar>
                     Adicionar ao carrinho -{' '}
                     {new Intl.NumberFormat('pt-BR', {
@@ -129,6 +138,7 @@ const Product = ({
                       currency: 'BRL'
                     }).format(preco)}
                   </TagComprar>
+                    </a>
                 </Item>
               </ModalContent>
               <div
