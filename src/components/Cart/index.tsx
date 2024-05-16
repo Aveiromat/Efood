@@ -49,13 +49,11 @@ const Cart = () => {
             </CartItem>
           ))}
         </ul>
-        <Quantity>{items.length} roupa(s) no carrinho</Quantity>
         <Prices>
-          Total de {formataPreco(getTotalPrice())}{' '}
-          <span>Em até 6x sem juros</span>
+          <span> Valor total </span> {formataPreco(getTotalPrice())}{' '}
         </Prices>
         <Button title="clique aqui para continuar com a compra" type="button">
-          Continuar com a compra
+          Continuar com a entrega
         </Button>
       </Sidebar>
     </CartContainer>

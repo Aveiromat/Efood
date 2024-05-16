@@ -31,7 +31,7 @@ export const CartContainer = styled.div`
 `
 
 export const Sidebar = styled.aside`
-  background-color: ${cores.cor3};
+  background-color: ${cores.cor1};
   z-index: 1;
   padding: 40px 16px 0 16px;
   max-width: 360px;
@@ -40,42 +40,50 @@ export const Sidebar = styled.aside`
   ${ButtonContainer} {
     max-width: 100%;
     width: 100%;
-    color: ${cores.cor3};
+    height: 24px;
+    color: ${cores.cor1};
+    font-size: 14px;
+    background-color: ${cores.cor2};
+    border-radius: 0;
+    padding: 0;
   }
 `
 
 export const Prices = styled.p`
-  font-weight: bold;
+  display: flex;
   font-size: 14px;
-  color: ${cores.cor1};
-  margin-bottom: 24px;
+  color: ${cores.cor3};
+  margin: 16px 0 16px;
+  justify-content: space-between;
 
   span {
     display: block;
     font-size: 12px;
-    color: ${cores.cor1};
+    color: ${cores.cor3};
   }
 `
 
 export const Quantity = styled.p`
   font-weight: bold;
   font-size: 16px;
-  color: ${cores.cor1};
+  color: ${cores.cor3};
   margin-top: 32px;
   margin-bottom: 16px;
 `
 
 export const CartItem = styled.li`
   display: flex;
-  border-bottom: 2px solid ${cores.cor2};
+  border-bottom: 2px solid ${cores.cor3};
   padding: 8px 0;
   position: relative;
+  background-color: ${cores.cor2};
+  margin-bottom: 16px;
 
   img {
     height: 80px;
     width: 80px;
     object-fit: cover;
-    margin-right: 24px;
+    margin: 0 8px;
   }
 
   h3 {
@@ -85,9 +93,9 @@ export const CartItem = styled.li`
   }
 
   span {
+    padding-top: 16px;
     display: block;
     color: ${cores.cor1};
-    font-weight: bold;
     font-size: 14px;
   }
 
@@ -105,7 +113,7 @@ export const CartItem = styled.li`
     border: none;
     background-color: transparent;
     position: absolute;
-    top: 8px;
-    right: 0;
+    bottom: 8px;
+    right: 8px;
   }
 `
