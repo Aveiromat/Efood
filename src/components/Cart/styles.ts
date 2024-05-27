@@ -47,6 +47,18 @@ export const Sidebar = styled.aside`
     border-radius: 0;
     padding: 0;
   }
+  
+  h1,
+  h3,
+  label {
+    color: ${cores.cor2};
+  }
+
+  small {
+    color: black;
+    text-decoration: underline;
+    font-size: 12px;
+  }
 `
 
 export const Prices = styled.p`
@@ -115,5 +127,68 @@ export const CartItem = styled.li`
     position: absolute;
     bottom: 8px;
     right: 8px;
+  }
+`
+
+export const Row = styled.div`
+  display: block;
+  column-gap: 24px;
+  margin-top: 16px;
+  margin-bottom: 24px;
+  align-items: flex-end;
+`
+
+export const InputGroup = styled.div`
+  flex: auto;
+
+  max-width: auto;
+
+  label {
+    font-size: 14px;
+    margin-top: 4px;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  input,
+  select {
+    background-color: ${cores.cor3};
+    height: 32px;
+    padding: 0 8px;
+    border: 1px solid ${cores.cor3};
+    border-bottom: 1px solid ${cores.cor1};
+    width: 100%;
+
+    &.error {
+      border: 1px solid red;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+`
+
+export const NextPrevious = styled.div`
+  > button {
+    border: none;
+    margin-bottom: 8px;
+    cursor: pointer;
+  }
+`
+
+export const Fracao = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 32px;
+`
+
+export const Realizado = styled.div`
+  margin-bottom: 24px;
+
+  > div {
+    font-size: 14px;
+    color: ${cores.cor2};
+    padding-top: 24px;
   }
 `
