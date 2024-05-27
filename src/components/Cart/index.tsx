@@ -20,6 +20,7 @@ import Card from '../Card'
 import { useFormik, setNestedObjectValues } from 'formik'
 import * as Yup from 'yup'
 import { usePurchaseMutation } from '../../services/api'
+import InputMask from 'react-input-mask'
 
 const Cart = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
@@ -52,10 +53,10 @@ const Cart = () => {
         .min(5, 'O campo precisa ter pelo menos 5 caracteres')
         .required('O campo é obrigatório.'),
       cep: Yup.string()
-        .min(5, 'O campo precisa ter pelo menos 5 caracteres')
+        .min(9, 'O campo precisa estar completo')
         .required('O campo é obrigatório.'),
       homeNumber: Yup.string()
-        .min(5, 'O campo precisa ter pelo menos 5 caracteres')
+        .min(1, 'O campo precisa ter pelo menos 1 caracteres')
         .required('O campo é obrigatório.'),
       complement: Yup.string().min(
         5,
@@ -66,16 +67,16 @@ const Cart = () => {
         .min(5, 'O campo precisa ter pelo menos 5 caracteres')
         .required('O campo é obrigatório.'),
       cardNumber: Yup.string()
-        .min(5, 'O campo precisa ter pelo menos 5 caracteres')
+        .min(16, 'O campo precisa ter 24 caracteres')
         .required('O campo é obrigatório.'),
       expiresMonth: Yup.string()
-        .min(5, 'O campo precisa ter pelo menos 5 caracteres')
+        .min(0, 'O campo precisa ter 2 caracteres')
         .required('O campo é obrigatório.'),
       expiresYear: Yup.string()
-        .min(5, 'O campo precisa ter pelo menos 5 caracteres')
+        .min(2, 'O campo precisa ter 2 caracteres')
         .required('O campo é obrigatório.'),
       cardCode: Yup.string()
-        .min(5, 'O campo precisa ter pelo menos 5 caracteres')
+        .min(3, 'O campo precisa ter 3 caracteres')
         .required('O campo é obrigatório.')
     }),
     onSubmit: async (values) => {
@@ -135,7 +136,7 @@ const Cart = () => {
   const removeItem = (id: number) => {
     dispatch(remove(id))
   }
-  
+
   const finaliza = () => {
     dispatch(finish())
     dispatch(close())
@@ -158,7 +159,6 @@ const Cart = () => {
 
   const handleNextStep = () => {
     if (currentStep === 2) {
-      // Verifica se algum campo na lista de campos obrigatórios está em branco
       const requiredFields: (keyof FormValues)[] = [
         'fullName',
         'address',
@@ -171,16 +171,11 @@ const Cart = () => {
       )
 
       if (isAnyFieldEmpty) {
-        // Marca todos os campos como tocados para exibir mensagens de erro
         const dirtyFields: Partial<Record<keyof FormValues, boolean>> = {}
         Object.keys(form.values).forEach((field) => {
           dirtyFields[field as keyof FormValues] = true
         })
         form.setTouched(dirtyFields)
-
-        console.log(
-          'Por favor, preencha todos os campos obrigatórios antes de continuar.'
-        )
       } else {
         setCurrentStep(currentStep + 1)
       }
@@ -286,13 +281,14 @@ const Cart = () => {
                   <Fracao>
                     <InputGroup>
                       <label htmlFor="cep">CEP</label>
-                      <input
+                      <InputMask
                         id="cep"
                         type="text"
                         name="cep"
                         value={form.values.cep}
                         onBlur={form.handleBlur}
                         onChange={form.handleChange}
+                        mask="99999-999"
                       />
                       <small>{getErrorMessage('cep', form.errors.cep)}</small>
                     </InputGroup>
@@ -365,13 +361,14 @@ const Cart = () => {
                   </InputGroup>
                   <InputGroup>
                     <label htmlFor="cardNumber">Número do cartão</label>
-                    <input
+                    <InputMask
                       id="cardNumber"
                       type="text"
                       name="cardNumber"
                       value={form.values.cardNumber}
                       onBlur={form.handleBlur}
                       onChange={form.handleChange}
+                      mask="9999 9999 9999 9999"
                     />
                     <small>
                       {getErrorMessage('cardNumber', form.errors.cardNumber)}
@@ -380,13 +377,14 @@ const Cart = () => {
                   <Fracao>
                     <InputGroup>
                       <label htmlFor="expiresMonth">Mês de expiração</label>
-                      <input
+                      <InputMask
                         id="expiresMonth"
                         type="text"
                         name="expiresMonth"
                         value={form.values.expiresMonth}
                         onBlur={form.handleBlur}
                         onChange={form.handleChange}
+                        mask="99"
                       />
                       <small>
                         {getErrorMessage(
@@ -397,13 +395,14 @@ const Cart = () => {
                     </InputGroup>
                     <InputGroup>
                       <label htmlFor="expiresYear">Ano de expiração</label>
-                      <input
+                      <InputMask
                         id="expiresYear"
                         type="text"
                         name="expiresYear"
                         value={form.values.expiresYear}
                         onBlur={form.handleBlur}
                         onChange={form.handleChange}
+                        mask="99"
                       />
                       <small>
                         {getErrorMessage(
@@ -415,13 +414,14 @@ const Cart = () => {
                   </Fracao>
                   <InputGroup>
                     <label htmlFor="cardCode">Código de segurança</label>
-                    <input
+                    <InputMask
                       id="cardCode"
                       type="text"
                       name="cardCode"
                       value={form.values.cardCode}
                       onBlur={form.handleBlur}
                       onChange={form.handleChange}
+                      mask="999"
                     />
                     <small>
                       {getErrorMessage('cardCode', form.errors.cardCode)}
