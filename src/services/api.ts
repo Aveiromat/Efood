@@ -1,51 +1,52 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { ItemCardapio } from '../pages/Home'
+
+type Product = {
+  id: number
+  price: number
+}
+
+type PurchasePayload = {
+  products: Product[]
+  billing: {
+    name: string
+    adress: string
+    city: string
+    cep: string
+    homeNumber: string
+    complement?: string
+  }
+  payment: {
+    card: {
+      name?: string
+      number?: string
+      expires: {
+        month: number
+        year: number
+      }
+      code?: number
+    }
+  }
+}
+
+type PurchaseResponse = {
+  orderId: string
+}
 
 const api = createApi({
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://fake-api-tau.vercel.app/api/eplay'
+    baseUrl: 'https://fake-api-tau.vercel.app/api/efood/'
   }),
   endpoints: (builder) => ({
-    getFeaturedClothes: builder.query<ItemCardapio, void>({
-      query: () => 'destaque'
-    }),
-    getOnSale: builder.query<ItemCardapio[], void>({
-      query: () => 'promocoes'
-    }),
-    getSoon: builder.query<ItemCardapio[], void>({
-      query: () => 'em-breve'
-    }),
-    getActionClothes: builder.query<ItemCardapio[], void>({
-      query: () => 'acao'
-    }),
-    getSportClothes: builder.query<ItemCardapio[], void>({
-      query: () => 'esportes'
-    }),
-    getSimulationClothes: builder.query<ItemCardapio[], void>({
-      query: () => 'simulacao'
-    }),
-    getFightClothes: builder.query<ItemCardapio[], void>({
-      query: () => 'luta'
-    }),
-    getRpgClothes: builder.query<ItemCardapio[], void>({
-      query: () => 'rpg'
-    }),
-    getItemCardapio: builder.query<ItemCardapio, string>({
-      query: (id) => `jogos/${id}`
+    purchase: builder.mutation<PurchaseResponse, PurchasePayload>({
+      query: (body) => ({
+        url: 'checkout',
+        method: 'POST',
+        body
+      })
     })
   })
 })
 
-export const {
-  useGetFeaturedClothesQuery,
-  useGetOnSaleQuery,
-  useGetSoonQuery,
-  useGetActionClothesQuery,
-  useGetFightClothesQuery,
-  useGetRpgClothesQuery,
-  useGetSimulationClothesQuery,
-  useGetSportClothesQuery,
-  useGetItemCardapioQuery
-} = api
+export const { usePurchaseMutation } = api
 
 export default api

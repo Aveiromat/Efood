@@ -18,10 +18,12 @@ import { formataPreco } from '../ProductsList'
 import Card from '../Card'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
+import { usePurchaseMutation } from '../../services/api'
 
 const Cart = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
   const dispatch = useDispatch()
+  const [purchase, { isLoading, isError, data }] = usePurchaseMutation()
 
   const form = useFormik({
     initialValues: {
@@ -74,7 +76,32 @@ const Cart = () => {
         .required('O campo é obrigatório.')
     }),
     onSubmit: (values) => {
-      console.log(values)
+      purchase({
+        billing: {
+          name: values.fullName,
+          adress: '',
+          city: '',
+          cep: '',
+          homeNumber: ''
+        },
+        payment: {
+          card: {
+            code: Number(values.cardCode),
+            name: values.cardDisplayName,
+            number: values.cardNumber,
+            expires: {
+              month: 1,
+              year: 2023
+            }
+          }
+        },
+        products: [
+          {
+            id: 1,
+            price: 10
+          }
+        ]
+      })
     }
   })
 
@@ -102,8 +129,12 @@ const Cart = () => {
     dispatch(remove(id))
   }
 
-  const finaliza = () => {
+  const posta = () => {
     form.handleSubmit()
+    setCurrentStep(currentStep + 1)
+  }
+
+  const finaliza = () => {
     dispatch(finish())
     dispatch(close())
     setCurrentStep(1)
@@ -256,7 +287,7 @@ const Cart = () => {
                   Continuar com o pagamento
                 </Button>
                 <Button
-                  onClick={handlePreviousStep}
+                  onClick={form.handleSubmit}
                   title="Voltar para o carrinho"
                   type="button"
                 >
