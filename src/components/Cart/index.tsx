@@ -135,7 +135,7 @@ const Cart = () => {
   const removeItem = (id: number) => {
     dispatch(remove(id))
   }
-
+  
   const finaliza = () => {
     dispatch(finish())
     dispatch(close())
@@ -194,7 +194,6 @@ const Cart = () => {
   const handlePreviousStep = () => {
     setCurrentStep(currentStep - 1)
   }
-
   return (
     <CartContainer className={isOpen ? 'is-open' : ''}>
       <Overlay onClick={closeCart} />

@@ -47,7 +47,7 @@ export const Sidebar = styled.aside`
     border-radius: 0;
     padding: 0;
   }
-
+  
   h1,
   h3,
   label {
