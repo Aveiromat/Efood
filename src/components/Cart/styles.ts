@@ -182,3 +182,13 @@ export const Fracao = styled.div`
   grid-template-columns: 1fr 1fr;
   column-gap: 32px;
 `
+
+export const Realizado = styled.div`
+  margin-bottom: 24px;
+
+  > div {
+    font-size: 14px;
+    color: ${cores.cor2};
+    padding-top: 24px;
+  }
+`
