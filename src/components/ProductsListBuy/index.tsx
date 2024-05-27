@@ -40,6 +40,7 @@ const ProductsListBuy = ({ background }: Props) => {
             filteredRestaurant.cardapio.map((item) => (
               <li key={item.id}>
                 <ProductBuy
+                  cardapioItem={item}
                   porcao={item.porcao}
                   preco={item.preco}
                   category={filteredRestaurant.tipo}

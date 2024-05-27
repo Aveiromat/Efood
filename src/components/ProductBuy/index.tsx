@@ -1,4 +1,3 @@
-import { Tag } from '../Tag'
 import {
   Item,
   Modal,
@@ -21,6 +20,8 @@ import {
   Comprar
 } from './styles'
 import { TagBigBuy, TagComprar } from '../TagBuy'
+import { useDispatch } from 'react-redux'
+import { add, open } from '../../store/reducers/cart'
 
 type Props = {
   id: string | number
@@ -31,6 +32,7 @@ type Props = {
   image: string
   preco: number
   porcao: string
+  cardapioItem: CardapioItem
 }
 
 type CardapioItem = {
@@ -53,17 +55,29 @@ type Restaurante = {
   cardapio: CardapioItem[]
 }
 
-const Product = ({
+const ProductBuy = ({
   title,
   category,
   type,
   description,
   image,
   preco,
-  porcao
+  porcao,
+  cardapioItem
 }: Props) => {
   const [modalEstaAberto, setModalEstaAberto] = useState(false)
   const [restaurante, setRestaurante] = useState<Restaurante | null>(null)
+
+  const dispatch = useDispatch()
+
+  const addToCart = () => {
+    dispatch(add(cardapioItem))
+    dispatch(open())
+  }
+
+  const openCart = () => {
+    dispatch(open())
+  }
 
   useEffect(() => {
     fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
@@ -80,7 +94,6 @@ const Product = ({
     description.length > 240
       ? `${description.substring(0, 240)}...`
       : description
-
   return (
     <>
       <Card>
@@ -122,13 +135,15 @@ const Product = ({
                     <br />
                     <br /> Serve {porcao}
                   </DescricaoCompra>
-                  <TagComprar>
-                    Adicionar ao carrinho -{' '}
-                    {new Intl.NumberFormat('pt-BR', {
-                      style: 'currency',
-                      currency: 'BRL'
-                    }).format(preco)}
-                  </TagComprar>
+                  <a onClick={addToCart}>
+                    <TagComprar>
+                      Adicionar ao carrinho -{' '}
+                      {new Intl.NumberFormat('pt-BR', {
+                        style: 'currency',
+                        currency: 'BRL'
+                      }).format(preco)}
+                    </TagComprar>
+                  </a>
                 </Item>
               </ModalContent>
               <div
@@ -141,4 +156,4 @@ const Product = ({
     </>
   )
 }
-export default Product
+export default ProductBuy

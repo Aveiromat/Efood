@@ -70,10 +70,11 @@ const Cart = () => {
         )}
         {currentStep === 2 && (
           <>
-            <h1>Hello World</h1>
+            <h1>Entrega</h1>
             <Button onClick={handlePreviousStep} title="voltar" type="button">
               Voltar
             </Button>
+            <br />
             <Button
               onClick={handleNextStep}
               title="clique aqui para continuar"
@@ -89,6 +90,7 @@ const Cart = () => {
             <Button onClick={handlePreviousStep} title="voltar" type="button">
               Voltar
             </Button>
+            <br />
             <Button
               onClick={handleNextStep}
               title="clique aqui para continuar"

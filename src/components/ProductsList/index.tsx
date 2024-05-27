@@ -9,6 +9,13 @@ export type Props = {
   clothes: Restaurante[]
 }
 
+export const formataPreco = (preco = 0) => {
+  return new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL'
+  }).format(preco)
+}
+
 const ProductsList = ({ background, title, clothes }: Props) => (
   <Container background={background}>
     <div className="container">
