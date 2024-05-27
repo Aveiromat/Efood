@@ -49,7 +49,8 @@ export const Sidebar = styled.aside`
   }
 
   h1,
-  h3 {
+  h3,
+  label {
     color: ${cores.cor2};
   }
 `

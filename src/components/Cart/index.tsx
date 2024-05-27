@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Button from '../Button'
 import { Overlay, CartContainer, Sidebar, Prices, CartItem } from './styles'
 import { useDispatch, useSelector } from 'react-redux'
@@ -71,6 +71,32 @@ const Cart = () => {
         {currentStep === 2 && (
           <>
             <h1>Entrega</h1>
+            <div>
+              <div>
+                <label htmlFor='fullName'>Quem irá receber</label>
+                <input id='fullName' type="text" />
+              </div>
+              <div>
+                <label htmlFor='address'>Endereço</label>
+                <input id='address' type="text" />
+              </div>
+              <div>
+                <label htmlFor='city'>Cidade</label>
+                <input id='city' type="text" />
+              </div>
+              <div>
+                <label>CEP</label>
+                <input type="text" />
+              </div>
+              <div>
+                <label>Número</label>
+                <input type="text" />
+              </div>
+              <div>
+                <label>Complemento</label>
+                <input type="text" />
+              </div>
+            </div>
             <Button onClick={handlePreviousStep} title="voltar" type="button">
               Voltar
             </Button>
