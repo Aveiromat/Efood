@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 import { TagContainerBuy } from '../TagBuy/styles'
 
 export const Card = styled.div`
@@ -106,6 +106,12 @@ export const Item = styled.li`
       transition: opacity 0.5s ease;
     }
   }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    display: grid;
+    margin-right: 0px;
+    align-items: center;
+  }
 `
 
 export const Modal = styled.div`
@@ -141,14 +147,13 @@ export const ModalContent = styled.div`
   position: relative;
   z-index: 1;
   background-color: ${cores.cor1};
-  padding: 20px; /* Adicione um espaçamento interno ao redor do conteúdo */
-  color: ${cores.cor3}; /* Defina a cor do texto */
+  padding: 20px;
+  color: ${cores.cor3};
 
-  /* Adicione um estilo para o conteúdo do modal */
   .content {
-    background-color: ${cores.cor2}; /* Defina uma cor de fundo para o conteúdo */
-    padding: 20px; /* Adicione um espaçamento interno */
-    border-radius: 8px; /* Adicione bordas arredondadas */
+    background-color: ${cores.cor2};
+    padding: 20px;
+    border-radius: 8px;
   }
 
   header {
@@ -176,6 +181,20 @@ export const ModalContent = styled.div`
     width: 100%;
     height: 480px;
   }
+
+  @media (max-width: ${breakpoints.desktop}) {
+    display: grid;
+    height: 344px;
+    margin: 0 24px;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    display: flex;
+    height: 80vh;
+    margin: 0 8px;
+    flex-direction: column-reverse;
+    justify-content: space-around;
+  }
 `
 
 export const Center = styled.div`
@@ -189,10 +208,29 @@ export const ItemImagem = styled.li`
   justify-self: center;
   position: relative;
 
+  @media (max-width: ${breakpoints.desktop}) {
+    display: flex;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    place-self: auto;
+  }
+
   > img {
     width: 280px;
     height: 280px;
     object-fit: cover;
+
+    @media (max-width: ${breakpoints.desktop}) {
+      align-self: center;
+      max-height: auto;
+    }
+
+    @media (max-width: ${breakpoints.tablet}) {
+      max-height: 120px;
+      width: 100%;
+      object-fit: cover;
+    }
   }
 
   &:hover {
@@ -240,6 +278,10 @@ export const TituloCompra = styled.h3`
   font-size: 16px;
   padding: 4px;
   margin-top: 32px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    margin-top: 0px;
+  }
 `
 
 export const DescricaoCompra = styled.p`
@@ -253,4 +295,11 @@ export const DescricaoCompra = styled.p`
   margin-top: 16px;
   margin-bottom: 4px;
   text-align: justify;
+`
+
+export const CenterA = styled.a`
+  @media (max-width: ${breakpoints.tablet}) {
+    display: grid;
+    justify-content: center;
+  }
 `

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 import { Props } from '.'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 
 export const Container = styled.section<Omit<Props, 'title' | 'pageId'>>`
   overflow-x: hidden;
@@ -16,6 +16,15 @@ export const List = styled.ul`
   column-gap: 24px;
   margin-top: 8vh;
   margin-bottom: 12vh;
+
+  @media (max-width: ${breakpoints.desktop}) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    grid-template-columns: 1fr;
+    margin: 32px 16px;
+  }
 `
 
 export const Title = styled.h2`
