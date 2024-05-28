@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 
 import { Props } from '.'
 
@@ -23,4 +23,13 @@ export const TagContainerComprar = styled.div<Props>`
   color: ${cores.cor1};
   font-size: ${(props) => (props.size === 'big' ? '14px' : '12px')};
   font-weight: bold;
+
+  @media (max-width: ${breakpoints.desktop}) {
+    position: initial;
+    margin-left: 4px;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    position: initial;
+  }
 `

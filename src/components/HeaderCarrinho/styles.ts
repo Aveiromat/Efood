@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 
 export const HeaderBar = styled.header`
   background-color: ${cores.cor3};
@@ -21,12 +21,20 @@ export const HeaderBar = styled.header`
     grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
     max-width: 1024px;
+
+    @media (max-width: ${breakpoints.tablet}) {
+      grid-template-columns: auto;
+    }
   }
 `
 
 export const Links = styled.ul`
   display: flex;
   justify-content: flex-start;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    justify-content: center;
+  }
 `
 
 export const LinksLogo = styled.ul`

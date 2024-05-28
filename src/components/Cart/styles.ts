@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 import { TagContainer } from '../Tag/styles'
 import { ButtonContainer } from '../Button/styles'
 
@@ -58,6 +58,10 @@ export const Sidebar = styled.aside`
     color: black;
     text-decoration: underline;
     font-size: 12px;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    max-width: 100vw;
   }
 `
 

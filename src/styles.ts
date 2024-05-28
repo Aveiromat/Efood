@@ -7,6 +7,11 @@ export const cores = {
   cor4: '#FFFFFF'
 }
 
+export const breakpoints = {
+  desktop: '1024px',
+  tablet: '624px'
+}
+
 export const GlobalCss = createGlobalStyle`
   * {
     margin: 0;

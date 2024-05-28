@@ -5,7 +5,8 @@ import {
   ItemImagem,
   Fechar,
   TituloCompra,
-  DescricaoCompra
+  DescricaoCompra,
+  CenterA
 } from './styles'
 import close from '../../assets/images/close.png'
 import React, { useEffect, useState } from 'react'
@@ -135,7 +136,7 @@ const ProductBuy = ({
                     <br />
                     <br /> Serve {porcao}
                   </DescricaoCompra>
-                  <a onClick={addToCart}>
+                  <CenterA onClick={addToCart}>
                     <TagComprar>
                       Adicionar ao carrinho -{' '}
                       {new Intl.NumberFormat('pt-BR', {
@@ -143,7 +144,7 @@ const ProductBuy = ({
                         currency: 'BRL'
                       }).format(preco)}
                     </TagComprar>
-                  </a>
+                  </CenterA>
                 </Item>
               </ModalContent>
               <div
